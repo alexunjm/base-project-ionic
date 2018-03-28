@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { GLOBAL } from '../default/generic';
+import { Observable } from 'rxjs/Observable';
 
 /*
   Generated class for the DataProvider provider.
@@ -16,7 +17,7 @@ export class DataProvider {
     this.url = GLOBAL.url.dataResource;
   }
 
-  get(endpoint: string, params?: any, reqOpts?: any) {
+  get(endpoint: string, params?: any, reqOpts?: any): Observable<ArrayBuffer>{
     if (!reqOpts) {
       reqOpts = {
         params: new HttpParams()

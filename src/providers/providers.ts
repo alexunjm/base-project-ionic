@@ -1,6 +1,5 @@
-import { ApiProvider } from './api/api';
 import { MenuProvider } from './menu/menu';
-import { GLOBAL, arrayMap } from './default/generic';
+import { arrayMap } from './default/generic';
 import { DataProvider } from './api/data';
 
 /**

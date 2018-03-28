@@ -1,25 +1,40 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" side="right" persistent="true">
   <ion-header>
     <ion-toolbar>
+      <!-- <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button> -->
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <button ion-item *ngFor="let item of menu" (click)="openPage(item)">
-        {{ item }}
-      </button>
-      <button ion-item (click)="openPage(friendsPage)">
-        Friends
-      </button>
-      <button ion-item (click)="openPage(eventsPage)">
-        Events
-      </button>
-      <button ion-item (click)="closeMenu()">
-        Close Menu
-      </button>
+      <ion-item-group sidemenu>
+        <ng-template ngFor let-p [ngForOf]="menu" let-i="index">
+          <ng-template [ngIf]="p.subs" [ngIfElse]="single">
+            <button ion-item (click)="menuItemHandler(p)">
+              <!-- <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon> -->
+              {{p.title}}
+            </button>
+            <ion-item-group sidemenu [class.hidden]="!p.showSubs" class="submenu">
+              <ng-template ngFor let-sub [ngForOf]="p.subs" let-j="index">
+                <button ion-item menuClose submenu-item (click)="openPage(sub)">
+                  {{sub.name}}
+                </button>
+              </ng-template>
+            </ion-item-group>
+          </ng-template>
+
+          <ng-template #single>
+            <button ion-item menuClose (click)="openPage(p)">
+              <!-- <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon> -->
+              {{p.title}}
+            </button>
+          </ng-template>
+        </ng-template>
+      </ion-item-group>
     </ion-list>
   </ion-content>
 </ion-menu>
 
-<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+<ion-nav id="nav" #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>
