@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, Config } from 'ionic-angular';
+import { Platform, Nav, Config, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -19,9 +19,11 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     private config: Config,
+    private events: Events,
     private _menuP: MenuProvider
   ) {
     this.buildMenu();
+    this.subscribeEvents();
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -35,13 +37,20 @@ export class MyApp {
     this._menuP.initNavigationMenu().subscribe(
       res => {
         this.menu = this._menuP.pages
-        console.log('MENU', this.menu);
+        /* console.log('MENU', this.menu); */
       },
       err => {
-        console.error('ERROR', err);
         this.menu = [];
+        console.error('ERROR', err);
       }
     );
+  }
+
+  subscribeEvents() {
+    this.events.subscribe('test:created', (text, time) => {
+      // text and time are the same arguments passed in `events.publish(text, time)`
+      console.log('Welcome', text, 'at', time);
+    });
   }
 
   openPage(menuElm) {

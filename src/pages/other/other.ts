@@ -3,7 +3,8 @@ import {
   IonicPage,
   NavController,
   NavParams,
-  MenuController
+  MenuController,
+  Events
 } from 'ionic-angular';
 
 /**
@@ -23,6 +24,7 @@ export class OtherPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public events: Events,
     public menu: MenuController) {
   }
 
@@ -31,12 +33,7 @@ export class OtherPage {
   }
 
   onPageDidEnter() {
-    this.menu.enable(true);
-    /* this.menu.enable(false); */
+    this.events.publish('test:created', 'test', Date.now());
   }
 
-  /*
-  onPageDidLeave() {
-  }
- */
 }
