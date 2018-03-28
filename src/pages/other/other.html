@@ -10,11 +10,19 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content custom-scroll padding>
   contenido de la otra página
 
   <button type="button" class="btn btn-large btn-block btn-default" (click)="onPageDidEnter()">
     button
   </button>
+
+  <div>
+    <div height-effect *ngFor="let d of data">
+      <div class="sample-height">
+        saludo {{d}}
+      </div>
+    </div>
+  </div>
 
 </ion-content>

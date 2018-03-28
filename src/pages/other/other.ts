@@ -21,11 +21,17 @@ import {
 })
 export class OtherPage {
 
+  data: Array<any>;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public events: Events,
     public menu: MenuController) {
+      this.data = [];
+      for (let i = 0; i < 10; i++) {
+        this.data.push(i);
+      }
   }
 
   ionViewDidLoad() {

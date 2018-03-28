@@ -1,6 +1,7 @@
 import { MenuProvider } from './menu/menu';
 import { arrayMap } from './default/generic';
 import { DataProvider } from './api/data';
+import { EventService } from './event.service';
 
 /**
   @author
@@ -10,5 +11,6 @@ import { DataProvider } from './api/data';
 export {
     MenuProvider,
     DataProvider,
-    arrayMap
+    arrayMap,
+    EventService
 };
