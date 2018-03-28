@@ -1,0 +1,14 @@
+// Raleway Font
+
+$raleway-font-path: $font-path !default;
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('#{$raleway-font-path}/Raleway-Light.eot');
+	src: url('#{$raleway-font-path}/Raleway-Light.eot?#iefix') format('embedded-opentype'),
+		url('#{$raleway-font-path}/Raleway-Light.woff') format('woff'),
+		url('#{$raleway-font-path}/Raleway-Light.ttf') format('truetype'),
+		url('#{$raleway-font-path}/Raleway-Light.svg#Raleway-Light') format('svg');
+	font-weight: 300;
+	font-style: normal;
+}
