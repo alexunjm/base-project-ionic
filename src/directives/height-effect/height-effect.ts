@@ -32,7 +32,6 @@ export class HeightEffectDirective implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    console.log('iniciando efecto');
     this.evS.rendered.emit('renderizado');
     this.render.setStyle(this.elRef.nativeElement, 'min-height', this.min + 'px');
     this.evS.scroll.subscribe(
